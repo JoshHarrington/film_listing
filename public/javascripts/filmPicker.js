@@ -1,9 +1,6 @@
-let currentNum;
-let oldNum;
-
 function radioClick(myRadio) {
-	oldNum = currentNum;
-	currentNum = myRadio.getAttribute('data-number');
+	let oldNum = currentNum;
+	let currentNum = myRadio.getAttribute('data-number');
 
 	let oldFilmPick = document.getElementsByClassName('film_'+oldNum)[0];
 	let firstFilmPick = document.getElementsByClassName('film_0')[0];
