@@ -1,0 +1,45 @@
+html {
+  box-sizing: border-box;
+}
+
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.films-container {
+  display: flex;
+  border-top: 1px solid lightgray;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-top: 30px;
+}
+
+.films-container h2 {
+  margin-top: 5px;
+}
+
+.films-container a {
+  color: blue;
+}
+
+.current-film__imageSrc {
+  float: left;
+  margin-right: 10px;
+}
+
+@media (max-width:500px) {
+  .current-film__imageSrc {
+    float: none;
+  }
+}

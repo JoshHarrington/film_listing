@@ -1,0 +1,65 @@
+.filmPicker-form {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 40px;
+}
+
+.filmPicker-form input[type="radio"] {
+	position: absolute;
+	display: none;
+}
+
+.filmPicker-form label {
+	display: inline-block;
+	padding: 10px;
+	background-color: aliceblue;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	transition: background-color .2s;
+}
+
+.filmPicker-form label img {
+	width: 120px;
+}
+
+@media (max-width:900px) {
+	.filmPicker-form label {
+		width: calc(25% - 10px);
+	}
+	.filmPicker-form label img {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+@media (max-width:600px) {
+	.filmPicker-form label {
+		width: calc(33% - 10px);
+	}
+}
+
+@media (max-width:500px) {
+	.filmPicker-form label {
+		width: calc(50% - 10px);
+	}
+}
+
+@media (max-width:400px) {
+	.filmPicker-form label {
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+.filmPicker-form label p {
+	max-width: 120px;
+}
+
+.filmPicker-form label.highlight {
+	background: cornflowerblue;
+}
+
+.filmPicker-form label:not(.highlight):hover {
+	background-color: rgb(191, 221, 248);	
+}
