@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1 Film Picker
+  p Welcome to best film picker app in the world, maybe
+
+  form.filmPicker-form
+    -for(let k = 0; k < films.length; k++){
+    -let tidyTitle = films[k]["title"].replace( /[^a-zA-Z]/g,'' );
+    -if (k == 0){ 
+    <label class="filmPickerLabel_#{k} highlight" for="filmPicker_#{k}">
+    -} else {
+    <label class="filmPickerLabel_#{k}" for="filmPicker_#{k}">
+    -}
+      img(src='#{films[k]["imageSrc"]}')
+      -if (k == 0){ 
+      input(type="radio" value='#{ tidyTitle }' name="filmPickerGroup" id='filmPicker_#{k}' data-number='#{k}' onclick="radioClick(this)" checked)
+      -} else {
+      input(type="radio" value='#{ tidyTitle }' name="filmPickerGroup" id='filmPicker_#{k}' data-number='#{k}' onclick="radioClick(this)")
+      -}
+      p #{films[k]["title"]}
+    </label>
+    -}
+
+  
+  .films-container
+    -for(let k = 0; k < films.length; k++)
+      -if (k == 0){ 
+      <div class="film_#{k} show">
+      -} else {
+      <div class="film_#{k} hide" hidden>
+      -}
+        img.current-film__imageSrc(src='#{films[k]["imageSrc"]}')
+        h2.current-film__title= films[k]["title"]
+        p.current-film__yearOfRelease= films[k]["yearOfRelease"]
+        p.current-film__description= films[k]["description"]
+        p
+          a(target="blank" href='#{films[k]["url"]}') IMDB entry
+      </div>
+
+  script(src="/javascripts/filmPicker.js")
