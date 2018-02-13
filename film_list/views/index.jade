@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  //- -for(var key in films)
+  //-   p #{films[key]["title"]}
+  //-   p #{films[key]["yearOfRelease"]}
+  //-   p #{films[key]["description"]}
+  //-   img(src='#{films[key]["imageSrc"]}')
+
+  //- -console.log(films[1]["title"]);
+  //- -console.log('hello');
+
+
+  form
+    -let i = 0;
+    -let j = 0;
+    -for(let k = 0; k < films.length; k++){
+    -let tidyTitle = films[k]["title"].replace( /[^a-zA-Z]/g,'' );
+    -j++;
+    label(for='filmPicker_#{j}') 
+      p #{films[k]["title"]}
+      img(src='#{films[k]["imageSrc"]}')
+    -if (k == 0){ 
+      input(type="radio" value='#{ tidyTitle }' name="filmPickerGroup" id='filmPicker_#{j}' data-number='#{i}' onclick="radioClick(this)" checked)
+    -} else {
+      input(type="radio" value='#{ tidyTitle }' name="filmPickerGroup" id='filmPicker_#{j}' data-number='#{i}' onclick="radioClick(this)")
+    -}
+    -i++;
+    -}
+
+  
+  .films-container
+    -for(let k = 0; k < films.length; k++)
+      -if (k == 0){ 
+        <div class="film_#{k} show">
+      -} else {
+      <div class="film_#{k} hide" hidden>
+      -}
+        h2.current-film__title #{films[k]["title"]}
+        p.current-film__yearOfRelease #{films[k]["yearOfRelease"]}
+        img.current-film__imageSrc(src='#{films[k]["imageSrc"]}')
+        p.current-film__description #{films[k]["description"]}
+        p
+          a(target="blank" href='#{films[k]["url"]}') read more
+      </div>
+
+  script(src="/javascripts/filmPicker.js")
